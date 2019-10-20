@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
 class StatusController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function create()
     {
@@ -41,5 +37,10 @@ class StatusController extends Controller
 
 
         return redirect('/profile/' . Auth::id());
+    }
+
+    public function show(Status $status)
+    {
+        return view('status.show', compact('status'));
     }
 }

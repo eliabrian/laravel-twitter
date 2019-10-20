@@ -19,6 +19,8 @@ class CreateProfilesTable extends Migration
             $table->string('bio')->nullable();
             $table->string('location')->nullable();
             $table->string('url')->nullable();
+            $table->string('image')->nullable();
+
             $table->timestamps();
 
             //Setiap Foreign Key Pakai Index
