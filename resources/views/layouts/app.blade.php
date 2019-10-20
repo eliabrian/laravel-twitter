@@ -78,7 +78,27 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                    @guest
+                    <div class="col-md-12">
+                        @yield('content')
+                    </div>
+                    @endguest
+                    @auth
+                    <div class="col-md-2 position-sticky d-flex flex-column p-2">
+                        <a href="{{ route('home') }}" class="btn btn-outline-dark border-0 mb-3">Home</a>
+                        <a href="{{ route('profile.show', Auth::user()->id) }}"
+                            class="btn btn-outline-dark mb-3 border-0">Profile</a>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="container">
+                            @yield('content')
+                        </div>
+                    </div>
+                    @endauth
+                </div>
+            </div>
         </main>
     </div>
 </body>
