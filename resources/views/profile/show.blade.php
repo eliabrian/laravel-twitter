@@ -4,7 +4,7 @@
 
 <div class="row d-flex align-items-center">
     <div class="col-md-3 p-3">
-        <img src="/storage/{{$user->profile->image}}" class="rounded-circle w-100">
+        <img src="/storage/{{$user->profile->profileImage()}}" class="rounded-circle w-100">
     </div>
 
     <div class="col-md-9">
@@ -17,6 +17,10 @@
             <div class="pl-2"><a href="/profile/{{$user->id}}/edit" class="btn btn-outline-dark">Edit Profile</a></div>
             @endcan
             @endauth
+            @can('update', $user->profile)
+            @else
+            <follow-button user-id="{{$user->id}}" follows="{{$follows}}"></follow-button>
+            @endcan
         </div>
         <div class="text-muted">
             &#64;{{$user->username}}
@@ -30,8 +34,8 @@
         </div>
         <div class="d-flex pb-2">
             <div class="pr-3"><strong>{{$user->statuses->count()}}</strong> Tweets</div>
-            <div class="pr-3"><strong>123</strong> Followers</div>
-            <div class="pr-3"><strong>154</strong> Following</div>
+            <div class="pr-3"><strong>{{$user->profile->followers->count()}}</strong> Followers</div>
+            <div class="pr-3"><strong>{{$user->following->count()}}</strong> Following</div>
         </div>
         @auth
         @can('update', $user->profile)
@@ -51,7 +55,7 @@
             <div class="row">
                 <div class="col-md-1 p-0">
                     <a href="/profile/{{$user->id}}">
-                        <img src="/storage/{{$user->profile->image}}" width="100%" class="rounded-circle">
+                        <img src="/storage/{{$user->profile->profileImage()}}" width="100%" class="rounded-circle">
                     </a>
                 </div>
                 <div class="col-md-11">

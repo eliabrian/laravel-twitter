@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +26,12 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('home', compact($user));
+        $userStatus = $user->statuses;
+
+        $following = $user->following()->pluck('profiles.user_id');
+        $status = Status::whereIn('user_id', $following)->latest()->get();
+        // $allTweet = collect($userStatus, $status);
+        $status = $userStatus->merge($status)->sortByDesc('created_at');
+        return view('home', compact('user', 'status'));
     }
 }

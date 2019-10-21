@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Status::class)->orderBy('created_at', 'DESC');
     }
+
+    public function following()
+    {
+        return $this->belongsToMany(Profile::class);
+    }
 }

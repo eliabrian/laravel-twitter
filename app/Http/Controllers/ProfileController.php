@@ -13,8 +13,8 @@ class ProfileController extends Controller
 {
     public function show(User $user)
     {
-
-        return view('profile.show', compact('user'));
+        $follows = (Auth::user()) ? Auth::user()->following->contains($user->id) : false;
+        return view('profile.show', compact('user', 'follows'));
     }
 
     public function edit(User $user)
