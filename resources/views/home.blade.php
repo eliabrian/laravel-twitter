@@ -22,7 +22,7 @@
                             {{date('d M Y', strtotime($tweet->created_at))}}
                         </p>
                     </div>
-                    <a href="/status/{{$tweet->id}}" class="stretched-link text-decoration-none" style="color:black;">
+                    <a href="/status/{{$tweet->id}}" class="text-decoration-none" style="color:black;">
                         <p class="card-text mb-2">{{$tweet->status}}</p>
                     </a>
 

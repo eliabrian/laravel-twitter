@@ -37186,7 +37186,7 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "pl-2" }, [
       _c("button", {
-        staticClass: "btn btn-primary",
+        staticClass: "btn btn-outline-primary",
         domProps: { textContent: _vm._s(_vm.buttonText) },
         on: { click: _vm.followUser }
       })

@@ -4,20 +4,22 @@
 <h1>Tweet</h1>
 <hr>
 <div class="card">
-    <div class="card-header">
-        <div class="d-flex align-items-center">
-            <div style="max-width: 49px">
-                <img src="/storage/{{$status->user->profile->image}}" width="100%" class="rounded-circle">
-            </div>
-            <div class="ml-3">
-                <a href="/profile/{{$status->user->id}}">
-                    <p class="m-0">{{$status->user->name}}</p>
-                </a>
+    <a href="/profile/{{$status->user->id}}" style="color:#000;">
+        <div class="card-header">
+            <div class="d-flex align-items-center">
+                <div style="max-width: 49px">
+                    <img src="/storage/{{$status->user->profile->image}}" width="100%" class="rounded-circle">
+                </div>
+                <div class="ml-3">
 
-                <p class="m-0">&#64;{{$status->user->username}}</p>
+                    <p class="m-0">{{$status->user->name}}</p>
+
+
+                    <p class="m-0">&#64;{{$status->user->username}}</p>
+                </div>
             </div>
         </div>
-    </div>
+    </a>
     <div class="card-body">
         <h3 class="m-0 pb-3">{{$status->status}}</h3>
         @if ($status->image != null)
